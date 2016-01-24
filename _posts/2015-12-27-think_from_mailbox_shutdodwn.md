@@ -1,26 +1,27 @@
 ---
 layout: post
-title: "从 mailbox 关闭所想到的"
+title: "从 Maibox 关闭所想到的"
 date: 2015-12-27 14:18
 ---
 
 前段时间，看到很多科技媒体在转载一则消息，Dropbox 可能会关闭 Mailbox，12 月 8 日，邮箱里收到了 Mailbox Saying goodbye 的邮件。
 
->Hello wang,
 
->It's with heavy hearts that we let you know Mailbox will shut down on February 26, 2016.
+> Hello wang,
 
->Mailbox ignited a shift in mobile email and many of its innovations are now ubiquitous across the industry. It’s been a great journey, and we’re proud of this impact and grateful to the community that helped make it possible. 
+It's with heavy hearts that we let you know Mailbox will shut down on February 26, 2016.
 
->When the Mailbox team joined Dropbox in 2013, we shared a passion for simplifying the way people work together. And solving the email problem seemed like a strong complement to the challenges Dropbox was already tackling.
+Mailbox ignited a shift in mobile email and many of its innovations are now ubiquitous across the industry. It’s been a great journey, and we’re proud of this impact and grateful to the community that helped make it possible. 
 
->But as we’ve increased our focus on collaboration, we realized there’s only so much an email app can do to fundamentally improve email. We’ve come to believe that the best way for us to improve people’s productivity going forward is to streamline the workflows that generate so much email in the first place.
+When the Mailbox team joined Dropbox in 2013, we shared a passion for simplifying the way people work together. And solving the email problem seemed like a strong complement to the challenges Dropbox was already tackling.
 
->We know saying goodbye to Mailbox will be hard for many. To help make the transition to a new email client easier, we’ve created guides and export tools. For more information about how we’ll be winding down Mailbox, please visit the Mailbox website.
+But as we’ve increased our focus on collaboration, we realized there’s only so much an email app can do to fundamentally improve email. We’ve come to believe that the best way for us to improve people’s productivity going forward is to streamline the workflows that generate so much email in the first place.
 
->Thank you to everyone who helped bring Mailbox to life, whether by spreading the word, letting us know what you liked (and didn’t like), or simply using the product. You taught us so much, and we’re deeply grateful.
+We know saying goodbye to Mailbox will be hard for many. To help make the transition to a new email client easier, we’ve created guides and export tools. For more information about how we’ll be winding down Mailbox, please visit the Mailbox website.
 
->—The Mailbox Team
+Thank you to everyone who helped bring Mailbox to life, whether by spreading the word, letting us know what you liked (and didn’t like), or simply using the product. You taught us so much, and we’re deeply grateful.
+
+—The Mailbox Team
 
 我反复读了很多遍，越发觉得写的真的是太好了。结构清晰，语言简洁而又感情真挚，简直可以作为产品讣闻的典范，让我这个曾经的 Mailbox 用户很是怜惜和感动。
 

@@ -104,7 +104,7 @@ for (i = 0; i < x.length; i++) {
 document.getElementById("demo").innerHTML = txt;
 ```
 
-##vAJAX 的 onreadystatechange 事件
+## AJAX 的 onreadystatechange 事件
 你如果仔细观察的话，我们在上面已经用了一些事件。比如在响应准备好时 `onreadystatechange`。当请求发啊送之后，我们想基于服务端的响应执行一些动作。当每一次 `readyState` 改变的时候，就会触发  `onreadystatechange`  事件。`readyState` 代表了 XMLHttpRequest 的状态。下
 图是 XMLHttpRequest 对象的一些重要属性
 ![onreadystatechange](http://7ktu98.com1.z0.glb.clouddn.com/blog/img/onreadystatechange.png)
