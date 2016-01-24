@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1" /><title>[前端] JavaScript 程序设计-调试</title><meta name="twitter:card" content="summary" /><meta name="twitter:site" content="@beepony" /><meta name="twitter:title" content="[前端] JavaScript 程序设计-调试" /><meta name="twitter:description" content="js 调试IE 和 firefox、Chrome 都可以进行调试"><meta name="description" content="js 调试IE 和 firefox、Chrome 都可以进行调试"><link rel="icon" href="/assets/favicon.png"><link rel="apple-touch-icon" href="/assets/touch-icon.png"><link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css"><link rel="stylesheet" href="/assets/core.css"><link rel="canonical" href="/2015/06/02/neteasy-js-debug.html"><link rel="alternate" type="application/atom+xml" title="beepony" href="/feed.xml" /></head><body><aside class="logo"> <a href="/"> <img src="http://beepony.b0.upaiyun.com/blog/avatar/avatar.png" class="gravatar"> </a> <span class="logo-prompt">Back to Home</span></aside><main> <noscript><style> article .footnotes { display: block; }</style></noscript><article><div class="center"><h1>[前端] JavaScript 程序设计-调试</h1><time>June 2, 2015</time></div><div class="divider"></div><h2 id="js-">js 调试</h2><p>IE 和 firefox、Chrome 都可以进行调试</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+	&lt;meta charset="UTF-8"&gt;
+	&lt;title&gt;demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;button type="button" id="add"&gt;点击&lt;/button&gt;
+	&lt;p id="count"&gt;0&lt;/p&gt;
+	&lt;script type="text/javascript"&gt;
+		var _count = 0;
+		var _ecount = document.getElementById("count");
+		var _ebtn = document.getElementById("add");
+		_ecount.innerHTML = _count;
+		_ebtn.addEventListener("click", btnclick, false);
+		function btnclick(){
+			_count++;
+			_ecount.innerHTML = _count;
+		}
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><img src="http://pic-bin.b0.upaiyun.com/wangyi/js%E8%B0%83%E8%AF%95.png" alt="js调试" /></p><blockquote><p>【elements】标签页的左侧可以对页面HTML结构进行查看与编辑，右侧对元素的css进行查看与编辑修改<br /> 【network】标签页可以分析网站请求的网络情况、查看某一请求的请求头、响应头和响应内容。<br /> 【sources】标签页可以查看请求的资源情况，包括CSS、JS、图片等的内容。也可以设置各种断点。<br /> 【timeline】标签页可以查看JS执行时间、页面元素渲染时间<br /> 【Profiles】标签页主要进行性能优化，包括查看CPU执行时间与内存占用<br /> 【audits】标签页用于优化前端页面、加速网页加载速度<br /> 【console】标签页是js的控制台，可以查看错误信息、打印调试信息（console.log()）、写测试脚本，还可以当作Javascript API查看用<br /> 【其他】通过点击手机图标，可以进行移动端调试页面</p></blockquote></article><div class="back"> <a href="/">Back</a></div></main></body></html>

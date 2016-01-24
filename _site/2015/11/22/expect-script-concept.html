@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1" /><title>EXPECT 的几个基本概念</title><meta name="twitter:card" content="summary" /><meta name="twitter:site" content="@beepony" /><meta name="twitter:title" content="EXPECT 的几个基本概念" /><meta name="twitter:description" content="由于经常需要把本地内容 scp 到服务器，同时在服务器上执行一些固定的命令，了解到 exepect 脚本可以自动实现，于是做个记录。尽力做到简单重复的工作交给计算机去处理，流程和任务自动化，提升干活的效率。当你需要跟控制台进行交互的时候，你就会发现 TCL-Expect 是多么好用的工具，能够将你从重复繁杂的任务中解救出来。以前只能手动去做的工作，现在通过 expect 脚本可以轻松完成。他..."><meta name="description" content="由于经常需要把本地内容 scp 到服务器，同时在服务器上执行一些固定的命令，了解到 exepect 脚本可以自动实现，于是做个记录。尽力做到简单重复的工作交给计算机去处理，流程和任务自动化，提升干活的效率。当你需要跟控制台进行交互的时候，你就会发现 TCL-Expect 是多么好用的工具，能够将你从重复繁杂的任务..."><link rel="icon" href="/assets/favicon.png"><link rel="apple-touch-icon" href="/assets/touch-icon.png"><link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css"><link rel="stylesheet" href="/assets/core.css"><link rel="canonical" href="/2015/11/22/expect-script-concept.html"><link rel="alternate" type="application/atom+xml" title="beepony" href="/feed.xml" /></head><body><aside class="logo"> <a href="/"> <img src="http://beepony.b0.upaiyun.com/blog/avatar/avatar.png" class="gravatar"> </a> <span class="logo-prompt">Back to Home</span></aside><main> <noscript><style> article .footnotes { display: block; }</style></noscript><article><div class="center"><h1>EXPECT 的几个基本概念</h1><time>November 22, 2015</time></div><div class="divider"></div><p>由于经常需要把本地内容 <code>scp</code> 到服务器，同时在服务器上执行一些固定的命令，了解到 <code>exepect</code> 脚本可以自动实现，于是做个记录。尽力做到简单重复的工作交给计算机去处理，流程和任务自动化，提升干活的效率。<br /> 当你需要跟控制台进行交互的时候，你就会发现 <code>TCL-Expect</code> 是多么好用的工具，能够将你从重复繁杂的任务中解救出来。以前只能手动去做的工作，现在通过 <code>expect</code> 脚本可以轻松完成。他们跟 shell 脚本很像，但是利用 .tcl 扩展实现，并且通过 #! 调用。</p><p>##设置脚本初始环境<br /> 第一步，跟写 <code>bash</code> 脚本很像，告诉脚本在什么环境下执行命令。对于 expect 来说，我们一般这么调用：</p><pre><code>#!/usr/bin/expect
+
+最好在脚本最后加上 `interact`，这样脚本执行完毕，还停留在终端，不至于退出，类似这样：
+
+#!/usr/bin/expect
+
+'''代码部分'''
+
+interact
+</code></pre><p>##Puts &amp; Output<br /> <code>shell</code> 脚本一般使用 <code>echo</code> 输出，而 <code>expect</code> 则使用 <code>puts</code> 输出，这一点倒是跟 <code>Ruby</code> 很像。</p><p><code>puts "I am performing a output command"</code></p><p>结果就会输出 <code>I am performing a output command</code>,跟 <code>echo</code> 效果一样。</p><p>一般情况下，脚本会输出你正在执行的命令。测试的时候很有用，但是在生产环境或者日常使用未必需要。如果只需要显示 <code>puts</code> 的文本，隐藏其他命令，可以通过：<br /> &gt;log_user 0</p><p>或者你可以强制开启输出命令及其响应，可以通过：<br /> &gt;log_user 1</p><p>##变量 Variables<br /> 定义变量非常简单，只用 <code>set {name}{value}</code>,例如:</p><pre><code>set a "apple"
+set b "banana"
+set c "cantalope"
+</code></pre><p>通过 <code>$</code> 加变量的 <code>name</code> 来引用变量，<code>$a</code> 即代表 <code>apple</code>.</p><p>##参数 Arguments<br /> 如果想通过传递参数的方式来设置变量，可以通过这种方式：</p><pre><code>set user [lindex $argv 0]
+set password [lindex $argv 1]
+</code></pre><p>然后，当执行脚本的时候带上参数<br /> <code>./mycript.tcl youruser yourpassword</code></p><h2 id="spawn--send">Spawn &amp; Send</h2><p>你可以使用 <code>spawn</code> 开启一个新的进程，例如 <code>ssh</code> 或者 <code>scp</code></p><pre><code>set user "myuser"
+set server "myserver.com"
+spawn ssh "$user\@server"
+</code></pre><p>上面的例子就是开启了一个 <code>ssh</code> 进程，同时提交用户名和服务器，本质上就是在控制台输入 <code>ssh myuser@myserver.com</code>.</p><p><code>send</code> 命令可以让你发送命令给控制台，比如发送一个密码：</p><pre><code>set password [lindex $argv 0]
+set app [lindex $argv 1]
+
+spawn sudo "apt-get install $app"
+
+expect "assword"
+
+send "$password\r"
+</code></pre><p>上面的例子允许你传递你的 sudo 密码和需要从 apt 安装的应用的名字，然后等着提示密码并且发送。No assword is not a mispelling，让我们看看 expect 声明。</p><h2 id="expect">Expect</h2><p><code>expect</code> 才是见证奇迹的时候。我们先从最基本的开始，假设你运行了一个命令，然后等着控制台提示，然后再继续执行…</p><pre><code>spawn apt-get "update"
+
+expect "$"
+
+# Move on to the next thing...
+</code></pre><p>你开启一个 <code>spawn</code> 进程 <code>apt-get</code>,然后等着 <code>$</code> 或者提示。<br /> 上面的 <code>expect</code> 语句遵循就近匹配的原则。所以上面的例子里的提示可以像这样，比如<code>root@server $~</code>。<code>expect</code> 语句找到 <code>$</code>，然后知道该继续执行下去了。</p><p>下面再来看看一些稍微复杂的例子，不只有一条 <code>expect</code>,让我们再看看 <code>ssh</code></p><pre><code>spawn ssh "$user\@server"
+
+expect {
+    "assword" {
+        send "$password\r"
+    }
+    "yes/no" {
+        send "yes\r"
+    }
+}
+
+# NOW we can move on...
+</code></pre><p>这里例子里，我们可能会遇到两种结果。第一种在连接到服务器之前会提示输入密码。<code>assword</code> 宽松的定义覆盖了两种情况，提交 <code>$password</code> 变量。<br /> 如果你尝试连接远程服务器，就会提示 <code>yes/no</code>,他会提交 <code>yes</code> 为你，然后等着密码提示，随后处理。</p><p>这也适合不同的提示-你可以做不同风格的提示，就像下面这样。</p><pre><code>expect {
+    "&gt; " { }
+    "$ " { }
+}
+</code></pre><p>This can be built-upon more to really close the error-gap:(不知道该如何翻译更得体，索性附上原句)</p><pre><code>expect {
+    "&gt; " { }
+    "$ " { }
+    "assword: " { 
+        send "$password\n" 
+        expect {
+            "&gt; " { }
+            "$ " { }
+        }
+    }
+    "(yes/no)? " { 
+        send "yes\n"
+        expect {
+          "&gt; " { }
+          "$ " { }
+        }
+    }
+    default {
+        send_user "Login failed\n"
+        exit
+    }
+}
+</code></pre><h2 id="conditionals">条件 Conditionals</h2><p><code>if</code> 语句非常简单，下面的例子足以说明：</p><pre><code>if { $a == "soup" } {
+    puts "You have soup!"
+else {
+    puts "No soup for you!"
+}
+</code></pre><h2 id="looping">循环 Looping</h2><p>有好几种方法可以实现循环，我倾向于使用 <code>while</code> 方法</p><pre><code>set count 10;
+while {$count &gt; 0 } {
+    puts "$count\n"
+    set count [expr $count-1];
+}
+</code></pre><p>这个语句会从 10 开始向后循环，然后输出每个数字</p><h2 id="section">函数</h2><p>函数可以复用代码，像这样：</p><pre><code>proc do_something { a b c } {
+    puts "You should buy some $a, $b, and $c!\n"
+}
+</code></pre><p>可以这样被调用</p><pre><code>
+set running [do_something "apples" "bananas" "cantalopes"]
+
+</code></pre><p>输出结果是这样：<br /> <code>You should buy some apples, bananas, and cantalopes!" </code><br /> 我的小脚本，供参考:</p><pre><code># !/usr/bin/expect -f
+# 同步本地目录到服务器，登陆服务器，删除 tkb 目录，修改 site 为 tkb
+
+set timeout -1
+set user "username"
+set server "server_ip"
+spawn /usr/bin/scp -r site $user@$server:/usr/share/nginx/html
+expect eof
+spawn ssh $user@$server
+expect "*"
+send "cd /usr/share/nginx/html\r"
+send "rm -rf tkb\r"
+send "mv site tkb\r"
+interact
+</code></pre><p>## 结论<br /> 上面就是 expect 脚本的一些最基本的概念。以前需要手工处理一系列动作，现在可以通过 expect 转化为执行一系列列动作的脚本。<br /> 本文翻译自 <a href="https://gist.github.com/Fluidbyte/6294378">Basic principles of using tcl-expect scripts</a><br /> 详细的说明，可以参考 <a href="http://www.tcl.tk/man/expect5.31/expect.1.html">expect</a></p></article><div class="back"> <a href="/">Back</a></div></main></body></html>

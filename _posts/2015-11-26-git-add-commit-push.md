@@ -1,0 +1,37 @@
+---
+layout: post
+title: "git 命令合三为一？"
+date: 2015-11-26 14:29
+---
+
+我在使用 git 的时候，大部分的需求本地修改能够及时推送到远程，两者保持同步。最常用的命令就是：
+
+```bash
+git add .
+git commit -m "some comments"
+git push
+```
+这三条命令几乎占用了日常 90% 的使用频率，就在想能否将三条命令合成一条完成，减少手动的输入量，本能的反应是使用 shell 脚本中的 && 连接符，一条命令执行。
+
+```bash
+git add . && git commit -m "some comments" && git push
+```
+是可以，但没有减少手动输入的工作量，仅仅单纯的将三条命令放在一行里，不符合期望。那么，alias 呢，使用别名，将三种常用的命令设置为一个别名，在 .bashrc 或者 .bash_profile( for mac)，像这样
+
+```bash
+alias lazygit = “git add .; git commit -a -m ’some comments’; git push;”;
+执行
+$ lazygit
+```
+这很好，直接输入别名，就可以自动执行三条命令，减少了手动输入量，初步达到我们的预期。但是仔细想想，还是不完美。问题在于，commemts  是写死的，无法在每次修改添加不同的 comments，不够灵活。那么，如果把每次 comments 作为参数传入变量中，不就可以灵活的提交 comments 了，可以在 bash 的配置文件中写成函数。
+
+```bash
+function lazygit(){
+     git add .
+     git commit -a -m $1
+     git push
+}
+
+$ lazygit "my comments"
+```
+这样就既节省了输入量，又能灵活的提交 commit 的信息，看起来似乎完美解决了我的问题。但又跟 git 设计之初 workflow 的初衷相违背，不过凡事处处满意也很难吧。算是做个简单的记录，满足了懒人的需求罢了，不必纠结。

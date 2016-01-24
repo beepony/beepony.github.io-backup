@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1" /><title>[前端] Javascript 程序设计－基本语法</title><meta name="twitter:card" content="summary" /><meta name="twitter:site" content="@beepony" /><meta name="twitter:title" content="[前端] Javascript 程序设计－基本语法" /><meta name="twitter:description" content="变量标识符 命名要求 以 字母，下划线，$ 开头 由 字母，下划线和 $ 和数字组成 "><meta name="description" content="变量标识符 命名要求 以 字母，下划线，$ 开头 由 字母，下划线和 $ 和数字组成 "><link rel="icon" href="/assets/favicon.png"><link rel="apple-touch-icon" href="/assets/touch-icon.png"><link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css"><link rel="stylesheet" href="/assets/core.css"><link rel="canonical" href="/2015/06/02/neteasy-js-basic.html"><link rel="alternate" type="application/atom+xml" title="beepony" href="/feed.xml" /></head><body><aside class="logo"> <a href="/"> <img src="http://beepony.b0.upaiyun.com/blog/avatar/avatar.png" class="gravatar"> </a> <span class="logo-prompt">Back to Home</span></aside><main> <noscript><style> article .footnotes { display: block; }</style></noscript><article><div class="center"><h1>[前端] Javascript 程序设计－基本语法</h1><time>June 2, 2015</time></div><div class="divider"></div><h2 id="section">变量标识符</h2><ol><li>命名要求<ul><li>以 <strong>字母</strong>，<strong>下划线</strong>，<strong>$</strong> 开头</li><li>由 <strong>字母</strong>，<strong>下划线</strong>和 <strong>$</strong> 和<strong>数字</strong>组成</li></ul></li></ol><p>范例，正确和错误的例子</p><pre><code>var abc;
+var _abc;
+var $abc;
+var _abc1$;
+function $$abc_(){}
+</code></pre><pre><code>var 1abc;
+var *abc;
+var abc&amp;;
+function #abc(){}
+</code></pre><p>## 关键字和保留字</p><h2 id="section-1">大小写敏感</h2><pre><code>var Arr = [1,2,3];
+var arr = function(){
+	For(var i = 0; i &lt; A.length; i++){
+		console.log(A[i]);
+	}
+}
+For 是关键字，应该为小写
+
+</code></pre><h2 id="section-2">严格模式</h2><p>引入严格模式的目的<br /> 增益<br /> - 消除 js 语法的不合理，不严谨，不安全，减少怪异行为保证代码运行安全<br /> - 提高编译器效率，增加运行速度</p><p>使用<br /> 全局使用严格模式</p><pre><code>&lt;script type="text/javascript"&gt;
+	"user strict";
+	(function)(){
+		console.log("hello world!");
+	})()
+&lt;/script&gt;
+</code></pre><p>函数内使用严格模式</p><pre><code>&lt;script type="text/javascript"&gt;
+	(function)(){
+
+		"user strict";
+		console.log("hello world!");
+	})()
+&lt;/script&gt;
+</code></pre><p>严格模式和标准的区别</p><ul><li>严格模式下，不能隐式生命和定义变量</li></ul><pre><code>(function)(){
+use "strict" 
+abc = 0 //引用错误
+})()
+</code></pre><ul><li>严格模式下，对象不能有重名的属性</li></ul><pre><code>use "strict"
+var obj = {a:1,b:2,a:3}
+//语法错误
+
+</code></pre><ul><li>不能调用 argumetns.callee 方法，匿名函数的递归</li></ul><pre><code>var count = 0;
+(function)(){
+    user "strict"
+    if (count &gt; 10){
+        return;
+    }
+    count++;
+    arguments.callee(); //TypeError
+})();
+</code></pre><ul><li>with 语句<br /> <code> var x,y; (function)(){ "use strict"; with(Math) { //TypeError x = cos(3 * PI) + sin (LN10); Y = tan(14 * E); } })(); </code><br /> 严格模式还有其他的限制<br /> ## 注释</li></ul><pre><code>/*
+这是一个 js 多行注释
+都可以注释多行
+*/
+// 这是 js 单行注释
+</code></pre></article><div class="back"> <a href="/">Back</a></div></main></body></html>
