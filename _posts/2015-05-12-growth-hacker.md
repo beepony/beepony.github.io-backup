@@ -4,7 +4,7 @@ title: 所谓 Growth hacking
 date: 2015-05-12 15:40
 ---
 
-##病毒增长
+## 病毒增长
 
 1996 年，沙比尔·巴蒂亚和杰克·史密斯业余时间做了一个项目，为了不让老板发现，绕过公司的防火墙收发邮件，他们开发了一款基于 Web 的电子邮件系统 Hotmail。著名的风险投资人德雷珀觉得这个产品潜力巨大，为这个项目投资了 30 万美元。在如何让这个伟大的产品为更多的人所使用的问题上，双方发生了分歧。两位创始人想通过传统的方式，比如户外广告，或者电台广播的方式宣传，但是对于一个完全免费的产品来说，这种方式成本太过昂贵。德雷珀建议说，不如在每封 Email 地下加上一句 「PS: I Love You. Get Your Free Email at Hotmail」
 
@@ -12,7 +12,7 @@ date: 2015-05-12 15:40
 
 六个月之后，Hotmail 就有了超过一百万的用户。有一个例子能够说明 Hotmail 的病毒式增长。巴蒂亚给他印度的朋友发了一封邮件，三个星期内，Hotmail 就在印度获得了三十万的用户。最后，Hotmail 已四亿美元的价格卖给了微软。
 
-##什么是 Growth hacker
+## 什么是 Growth hacker
 Hotmail 病毒式的增长一直为人们津津乐道，后来出现的 Growth hacker 即被赋予这一重任的角色。
 
 Growth Hacker 跟传统市场的最大区别就在于从产品开发的层面开始考虑用户增长，比如通过登陆页面和 A/B testing 来决定使用那个页面，从而提高用户转化率，快速迭代。
@@ -24,22 +24,22 @@ AndrewChen 对 Growth hacker 的定义非常准确
 > 最重要的是，他们将直接营销的概念分层，更加注重定量测量、场景建模和无数的数据库访问，如果一家创业公司正处于产品 / 市场适应的前期，那么 Growth hacker 就能够帮助确认产品的核心定位是否正确，而在适应期结束之后，Growth hacker 则能帮助扩增用户。
 
 
-##巨头们的 Growth hacking 之道
+## 巨头们的 Growth hacking 之道
 
-###Twitter 
+### Twitter 
 为了提高用户转化率，大幅度简化主页，极力突出注册和登录页面。新用户注册过程时推荐他们至少先关注 10 个用户，只要他们这样操作了，用户的回流率和保留率便开始大增。Twitter 通过数据发现，一旦你关注了 30 个人以上，用户的留存率会大幅增长，所以他们通过各种手动鼓励多关注人，比如推荐，你关注的人也关注了。     
 ![](http://pic-bin.b0.upaiyun.com/growthhacker/t1.png)
 ![](http://pic-bin.b0.upaiyun.com/growthhacker/t2.png)
 
-###Airbnb 
+### Airbnb 
 Airbnb 现在获得的巨大估值，跟他们早期将产品和 Craigslist 大平台整合息息相关。Airbnb 支持用户将房源信息一键分享到 Craigslist，和我们常见的分享到微博，微信等不同，这个功能的实现并没有用到 Craigslist 的公用 API，而是通过程序自动填写信息获取房源具体信息，同时美化了发布在 Craigslist 样式，这种发布策略十分出色，为 Airbnb 早期获取的大量的用户。     
 ![](http://pic-bin.b0.upaiyun.com/growthhacker/a.png)
 
-###Dropbox
+### Dropbox
 跟 Paypal 的邀请系统类似，Dropbox 鼓励用户邀请他们的朋友注册 Dropbox,作为奖励，Dropbox 给每个邀请的用户更多的存储空间，这种方式帮助 Dropbox 在两年之内从十万用户增长到四百万。同属于 Dropbox 公司的另外一款产品 Mailbox,则通过一个非常吸引人的启动视频，结合一个非常酷的等待列表界面——能够显示有多少人在你前面等待这个 APP，Mailbox 吸引了大量用户的注意力，仅仅两个星期，就有了 100 万注册用户，急切的等待该服务的推出。     
 ![](http://pic-bin.b0.upaiyun.com/growthhacker/m.png)
 
-##Growth hacking 最佳实践
+## Growth hacking 最佳实践
 每个创业公司都希望自己的产品一经推出，便获得病毒式的增长。得益于 Growth Hacker 的火爆，现在已经有了一套精益创业的市场框架：AARRR。
 
 ![](http://pic-bin.b0.upaiyun.com/growthhacker/aarrr.png)
