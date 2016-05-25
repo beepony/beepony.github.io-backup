@@ -7,6 +7,7 @@ date: 2015-9-23 17:27
 sudo apt-get install expect
 
 脚本如下：
+
 ```
 #! /usr/bin/expect 
 # auto ssh login with expect

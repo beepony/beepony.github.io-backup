@@ -17,9 +17,9 @@ require 'json'
 
 # 将给定的 url dig 出来 answer 里的第一条解析记录
 def dig_dns(url)
-    packet = Net::DNS::Resolver.start("#{url}")
-    r = packet.answer[0].to_s.split(" ")
-    print "#{r[0].to_s.chop}  " "#{r[4].to_s.split(".")[0]}\n"
+  packet = Net::DNS::Resolver.start("#{url}")
+  r = packet.answer[0].to_s.split(" ")
+  print "#{r[0].to_s.chop}  " "#{r[4].to_s.split(".")[0]}\n"
 end
 
 # 将泛域名里面的 * 替换成 test，以符合域名解析规则
@@ -38,7 +38,7 @@ def afile(filename)
 	File.open(filename,'r') do |f|
 		f.each do |line|
 			line.split(' ').each {|s|
-				 dig_dns(subt(s)) 
+				dig_dns(subt(s)) 
 			}
 		end
 	end

@@ -126,11 +126,13 @@ null => String， 结果为 "null"
 ### Boolean
 #### 1. 类型说明
 值为 true,false
+
 #### 2. 出现场景
 * 条件语句导致系统执行的隐式类型转换
 `if(document.getElementById('notExistElement')){...}else{...}`
 当元素不存在的时候，会返回 null,条件语句会隐式的转换为 false，执行 else 语句。
 * 字面量或者定义变量
+
 ```
 true
 var a = true;
@@ -142,15 +144,19 @@ var a = true;
 |false|0|"false"|
 
 ### String
+
 #### 1. 类型说明
+
 由单引号或者双引号括起来的字符序列
+
 #### 2. 出现场景
 
 ```
 'hello world!'
 var s = 'name = "myform"';
 ```
-#### 3. 类型转换
+#### 3. 类型转换     
+
 | 转换|Number|Boolean|
 |--|--:|:--:|
 | "" | 0 |false|
@@ -158,16 +164,21 @@ var s = 'name = "myform"';
 |"1a"|true|NaN|
 
 ### Number
-#### 1. 类型说明
+
+#### 1. 类型说明      
+
 整形直接量，八进制(0)直接量，十六进制(0x)直接量，浮点型直接量
+
 #### 2. 出现场景
+
 ```
 10
 1.4
 1.2e5
 var count = 0x10;
 ```
-#### 3. 类型转换
+#### 3. 类型转换        
+
 | 转换|String|Boolean|
 |--|--:|:--:|
 |0 | "0" |false|
@@ -176,11 +187,17 @@ var count = 0x10;
 |NaN|"NaN"|false|
 
 ### Object 
-#### 1. 类型说明
+
+#### 1. 类型说明      
+
 Object 类型是一组属性的集合
-#### 2. 出现场景
+ 
+#### 2. 出现场景  
+
 `var obj = {name:'jerry', age: 0};`
-#### 3. 类型转换
+
+#### 3. 类型转换    
+
 | 转换|String|Boolean|Number|
 |--|--:|:--:|:--:|
 |{} | "[object Object]" |true|NaN|

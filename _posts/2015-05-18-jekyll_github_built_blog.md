@@ -43,6 +43,7 @@ git commit -m "add the CNAME file to band the custom domain"
 git push
 ```
 ### 4. 写文章
+
 Jekyll 的每篇文章都是一个 markdown 文件，存储在 _posts 目录下。每篇文章的名字遵循固定的格式，系统会根据文件名生成固定的文章链接。格式为：`YYYY-MM-DD-文章名.md`，`YYYY` 是年份，`MM` 是月份 `DD` 是日期。例如：`2015-05-18-test.md`
 除了文件名格式固定之外，在写每篇文章之前先要设置头信息。头信息包含在两行三虚线之间。在头信息可以设置预定义的全局变量的值，Jekyll 会根据变量的值来生成文章页面。下图是本篇文章的头信息：
 
