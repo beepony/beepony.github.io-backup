@@ -5,6 +5,7 @@ date: 2015-05-18 16:17
 ---
 
 又折腾了一个 Blog 作为备份（万一 Farbox 不在了呢）：[binge](http://binge.im)，简述下搭建过程。 
+
 ### 1. 本地部署
 本地部署 Jekyll 的步骤，跟新建一个 Rails 项目类似，首先安装 Jekyll
 `sudo gem install jekyll`
@@ -18,6 +19,7 @@ date: 2015-05-18 16:17
 ### 2. 远程发布到 Github
 登入 Github 账号，新建一个 `test.github.io` (把这里的 **test** 替换成你再 Github 的账号)
 将本地项目纳入 Git 版本管理，并且 Push 到 Github，在本地依次执行一下命令
+
 ```
 cd test 
 git init # 初始化
@@ -53,7 +55,7 @@ categories: test # 分类，将文章分成不同的属性。例如 test.com/tes
 tags: Jekyll Github  # 标签，以空格隔开
 ---
 ```
-其他的头信息设置，可以参考: [frontmatter](http://jekyllrb.com/docs/frontmatter/)
+其他的头信息设置，可以参考: [frontmatter](http://jekyllrb.com/docs/frontmatter/)          
 Markdown 语法参考：[献给新手的 Markdown 指南](http://www.jianshu.com/p/q81RER)
 
 ### 5. 加入评论
