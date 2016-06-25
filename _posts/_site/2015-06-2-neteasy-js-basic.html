@@ -1,0 +1,121 @@
+<h2 id="section">变量标识符</h2>
+<ol>
+  <li>命名要求
+    <ul>
+      <li>以 <strong>字母</strong>，<strong>下划线</strong>，<strong>$</strong> 开头</li>
+      <li>由 <strong>字母</strong>，<strong>下划线</strong>和 <strong>$</strong> 和<strong>数字</strong>组成</li>
+    </ul>
+  </li>
+</ol>
+
+<p>范例，正确和错误的例子</p>
+
+<p><code>
+var abc;
+var _abc;
+var $abc;
+var _abc1$;
+function $$abc_(){}
+</code></p>
+
+<p><code>
+var 1abc;
+var *abc;
+var abc&amp;;
+function #abc(){}
+</code>
+## 关键字和保留字</p>
+
+<h2 id="section-1">大小写敏感</h2>
+
+<p>```
+var Arr = [1,2,3];
+var arr = function(){
+	For(var i = 0; i &lt; A.length; i++){
+		console.log(A[i]);
+	}
+}
+For 是关键字，应该为小写</p>
+
+<p>```</p>
+
+<h2 id="section-2">严格模式</h2>
+<p>引入严格模式的目的
+增益
+- 消除 js 语法的不合理，不严谨，不安全，减少怪异行为保证代码运行安全
+- 提高编译器效率，增加运行速度</p>
+
+<p>使用
+全局使用严格模式</p>
+
+<p><code>
+&lt;script type="text/javascript"&gt;
+	"user strict";
+	(function)(){
+		console.log("hello world!");
+	})()
+&lt;/script&gt;
+</code>
+函数内使用严格模式</p>
+
+<p>```
+<script type="text/javascript">
+	(function)(){</script></p>
+
+<pre><code>	"user strict";
+	console.log("hello world!");
+})() &lt;/script&gt; ``` 严格模式和标准的区别
+</code></pre>
+
+<ul>
+  <li>严格模式下，不能隐式生命和定义变量</li>
+</ul>
+
+<p><code>
+(function)(){
+use "strict" 
+abc = 0 //引用错误
+})()
+</code>
+* 严格模式下，对象不能有重名的属性</p>
+
+<p>```
+use “strict”
+var obj = {a:1,b:2,a:3}
+//语法错误</p>
+
+<p>```
+* 不能调用 argumetns.callee 方法，匿名函数的递归</p>
+
+<p><code>
+var count = 0;
+(function)(){
+    user "strict"
+    if (count &gt; 10){
+        return;
+    }
+    count++;
+    arguments.callee(); //TypeError
+})();
+</code>
+* with 语句
+<code>
+var x,y;
+(function)(){
+    "use strict";
+    with(Math) {    //TypeError
+        x = cos(3 * PI) + sin (LN10);
+        Y = tan(14 * E);
+    }
+})();
+</code>
+严格模式还有其他的限制
+## 注释</p>
+
+<p><code>
+/*
+这是一个 js 多行注释
+都可以注释多行
+*/
+// 这是 js 单行注释
+</code></p>

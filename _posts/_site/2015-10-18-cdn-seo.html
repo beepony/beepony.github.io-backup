@@ -1,0 +1,46 @@
+<p>问题起源于一次用户的咨询。他看到某篇文档的 Q/A 上写着，为了避免使用镜像导致的降权，最好在源站根目录下上传一份
+robots.txt。于是就很问，为什么为使用镜像会导致网站降权，回答这个问题之前先看看什么是权重。</p>
+
+<h4 id="section">网站权重</h4>
+<p>网站权重是指搜索引擎给予网站的权威值，包含对网站的综合评价。权重值越高，在搜索引擎里所占的比例越大，网站排名越好。提高网站的权重值，有利于提高网站在搜索引擎的排名，提高网站的整体流量和网站信任度，对网站发展起到至关重要的作用。</p>
+
+<h4 id="section-1">问题</h4>
+<p>为了能够给网站引入更多的流量，很多网站开始做搜索引擎优化，采取各种手段，极力提高网站的权重，这其中有一种方法就是镜像。所谓镜像，通俗点说，就是复制一个一模一样的网站，域名 IP 不同，内容完全一样，以此达到多次收录的目的。而现在许多搜索引擎都有自己的一套镜像网站的过滤系统，一旦发现网站镜像，就会将源站和镜像从搜索引擎的数据库中删除，导致网站权重下降，流量减少，影响网站的运营。</p>
+
+<h4 id="upyun-">UPYUN 镜像</h4>
+<p>UPYUN 镜像 CDN 的推出是希望能解决用户源站迁移数据的难题，开启镜像之后，程序会自动抓去源站资源，永久存储在
+UPYUN，极大的减轻了源站的压力。但这也可能带来潜在的威胁，就是文章开头所说的网站降权。</p>
+
+<h4 id="rebots">rebots</h4>
+<p>既然搜索引擎有过滤镜像的功能，避免降权的办法，就是不让搜索引擎发现这个镜像。资源都是在共网上可以访问的，怎么样才能避免搜索引擎的抓去的。这里不得不提的就是 robots.txt，关于 rebots 的作用可以参考
+<a href="https://zh.wikipedia.org/wiki/Robots.txt">rebots</a> 我们可以手动上传一份 robots，里面写好约定俗称的规则来告诉搜索引擎，不要来抓取镜像的资源。以 UPYUN 镜像为例，如下的 robots 的模板可以参考一下：</p>
+
+<p><code>
+# rebots.txt generated at UPYUN
+User-agent: Baiduspider
+Disallow: /
+User-agent: Sosospider
+Disallow: /
+User-agent: sogou spider
+Disallow: /
+User-agent: YodaoBot
+Disallow: /
+User-agent: Googlebot
+Disallow: /
+User-agent: Bingbot
+Disallow: /
+User-agent: Slurp
+Disallow: /
+User-agent: MSNBot
+Disallow: /
+User-agent: googlebot-image
+Disallow: /
+User-agent: googlebot-mobile
+Disallow: /
+User-agent: yahoo-blogs/v3.9
+Disallow: /
+User-agent: psbot
+Disallow: /
+User-agent: *
+Disallow: /
+</code></p>

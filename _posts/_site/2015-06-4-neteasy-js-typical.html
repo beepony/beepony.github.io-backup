@@ -1,0 +1,266 @@
+<p>主要介绍6种基本类型（Undefine、Null、Boolean、Number、String、Object）、原生类型及引用类型概念等.</p>
+
+<h2 id="section">标准类型</h2>
+<p>标准类型分为原始类型和引用对象，原始类型(primitive)包括</p>
+
+<ul>
+  <li>Undefined</li>
+  <li>Null</li>
+  <li>Boolean</li>
+  <li>String</li>
+  <li>Number</li>
+  <li>Object</li>
+</ul>
+
+<h2 id="section-1">引用类型</h2>
+
+<ul>
+  <li>Object</li>
+</ul>
+
+<h2 id="section-2">原始类型和引用类型在栈内存中的区别</h2>
+
+<p><code>
+var a;
+var b = null;
+var c = true;
+var d = 123;
+var e = "hello";
+var f = {a:1};
+// a,b,c,d,e 都是原始类型，f 是引用类型
+</code>
+原始类型在栈内存中的情况
+| a |undefined(Undefined 类型)|
+|—|—:|
+|b  |   null(Null 类型)|
+|c  |   true(Boolean 类型)|
+|d  |   123(Number 类型)|
+|e  |   “hello”(String 类型)|
+|f  |   Object 类型|
+原始类型都是保存在栈内存中，而引用类型在栈内存内存中只是一个地址，该地址指向堆内存，如图所示</p>
+
+<p><img src="http://pic-bin.b0.upaiyun.com/wangyi/yinyongleixing.png" alt="yinyongleixing" /></p>
+
+<p>由上图可以推断出，原始类型的复制都是在栈内存中复制一份，而引用类型只是复制了指向堆内存的地址，如下图。</p>
+
+<p><code>
+var obj1 = {a:1};
+var obj2 = obj1;
+</code>
+<img src="http://pic-bin.b0.upaiyun.com/wangyi/yuanshi-yinyong-qubie.png" alt="qubie" /></p>
+
+<p>下面详细的说明原始类型的用法
+### Undefined
+#### 1. 类型说明</p>
+
+<p>该类型的值就是：undefined</p>
+
+<h4 id="section-3">2. 出现场景</h4>
+
+<ul>
+  <li>已经声明但是没有赋值的变量</li>
+</ul>
+
+<p><code>
+var a;
+console.log(a);
+console.log(b)
+// 只定义，未赋值
+</code>
+* 获取对象不存在的属性
+<code>
+var obj = {a:1,b:2};
+console.log(obj.c);
+// obj 不存在 c 属性
+</code>
+* 无返回值的函数的执行结果</p>
+
+<p><code>
+function f(){
+    alert("test");
+}
+var ret = f();
+console.log(ret);
+</code>
+* 函数的参数没有传入
+<code>
+functiom f(i,j){
+    console.log(i);
+    console.log(j);
+};
+f(1);
+</code>
+#### 3. 类型转换
+undefined ＝&gt; Boolean，在判断该属性是否存在时使用</p>
+
+<p><code>
+var obj = {a:1,b:function(){},...};
+if(obj.c){
+    console.log(obj.c);
+}
+// 结果为 false
+</code>
+undefined ＝&gt; Number
+<code>
+var count;
+count + 1;
+//结果为 NaN
+</code>
+undefined ＝&gt; String
+<code>
+(function(a){
+    console.log("a:" + a);
+})()
+</code>
+### Null
+#### 1. 类型说明
+值为 null
+#### 2. 出现场景
+对象不存在时为 null
+<code>document.getElementById('notExistElement');</code>
+#### 3. 类型转换
+null =&gt; Boolean，结果为 false
+null =&gt; Number， 结果为 0
+null =&gt; String， 结果为 “null”</p>
+
+<h3 id="boolean">Boolean</h3>
+<p>#### 1. 类型说明
+值为 true,false</p>
+
+<h4 id="section-4">2. 出现场景</h4>
+<ul>
+  <li>条件语句导致系统执行的隐式类型转换
+<code>if(document.getElementById('notExistElement')){...}else{...}</code>
+当元素不存在的时候，会返回 null,条件语句会隐式的转换为 false，执行 else 语句。</li>
+  <li>字面量或者定义变量</li>
+</ul>
+
+<p><code>
+true
+var a = true;
+</code>
+#### 3. 类型转换
+| 转换|Number|String|
+|–|–:|:–:|
+| true | 1 |”null”|
+|false|0|”false”|</p>
+
+<h3 id="string">String</h3>
+
+<h4 id="section-5">1. 类型说明</h4>
+
+<p>由单引号或者双引号括起来的字符序列</p>
+
+<h4 id="section-6">2. 出现场景</h4>
+
+<p><code>
+'hello world!'
+var s = 'name = "myform"';
+</code>
+#### 3. 类型转换</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>转换</th>
+      <th style="text-align: right">Number</th>
+      <th style="text-align: center">Boolean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>””</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: center">false</td>
+    </tr>
+    <tr>
+      <td>“123”</td>
+      <td style="text-align: right">123</td>
+      <td style="text-align: center">true</td>
+    </tr>
+    <tr>
+      <td>“1a”</td>
+      <td style="text-align: right">true</td>
+      <td style="text-align: center">NaN</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="number">Number</h3>
+
+<h4 id="section-7">1. 类型说明</h4>
+
+<p>整形直接量，八进制(0)直接量，十六进制(0x)直接量，浮点型直接量</p>
+
+<h4 id="section-8">2. 出现场景</h4>
+
+<p><code>
+10
+1.4
+1.2e5
+var count = 0x10;
+</code>
+#### 3. 类型转换</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>转换</th>
+      <th style="text-align: right">String</th>
+      <th style="text-align: center">Boolean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td style="text-align: right">“0”</td>
+      <td style="text-align: center">false</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td style="text-align: right">“1”</td>
+      <td style="text-align: center">true</td>
+    </tr>
+    <tr>
+      <td>Infinity</td>
+      <td style="text-align: right">“Infinity”</td>
+      <td style="text-align: center">true</td>
+    </tr>
+    <tr>
+      <td>NaN</td>
+      <td style="text-align: right">“NaN”</td>
+      <td style="text-align: center">false</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="object">Object</h3>
+
+<h4 id="section-9">1. 类型说明</h4>
+
+<p>Object 类型是一组属性的集合</p>
+
+<h4 id="section-10">2. 出现场景</h4>
+
+<p><code>var obj = {name:'jerry', age: 0};</code></p>
+
+<h4 id="section-11">3. 类型转换</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>转换</th>
+      <th style="text-align: right">String</th>
+      <th style="text-align: center">Boolean</th>
+      <th style="text-align: center">Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{}</td>
+      <td style="text-align: right">“[object Object]”</td>
+      <td style="text-align: center">true</td>
+      <td style="text-align: center">NaN</td>
+    </tr>
+  </tbody>
+</table>

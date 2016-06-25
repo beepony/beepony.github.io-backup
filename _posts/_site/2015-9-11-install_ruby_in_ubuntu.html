@@ -1,0 +1,60 @@
+<h2 id="section">1. 先更新系统，安装常用软件</h2>
+<p>Ubuntu 上执行 sudo apt-get update</p>
+
+<p><code>
+sudo apt-get install -y git-core curl zlib1g-dev build-essential \    
+                     libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 \    
+                     libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common
+</code>
+安装 mysql
+<code>sudo apt-get install mysql-server  mysql-client  libmysqlclient-dev</code>
+根据提示，设置密码</p>
+
+<h2 id="rbenv">2. 安装 rbenv</h2>
+<p><a href="https://github.com/sstephenson/rbenv">rbenv</a> 是 Basecamp（原 37signal）开发的 Ruby 版本管理工具，使用他可以很方便的设置在开发，测试，上线环境下的 Ruby 版本。跟它类似的是一款老牌管理工具 RVM，选择 rbenv 的原因是它更简单，强大，专注。</p>
+
+<ol>
+  <li>
+    <p>克隆 rbenv 进 .rbenv
+<code>git clone https://github.com/sstephenson/rbenv.git ~/.rbenv</code></p>
+  </li>
+  <li>
+    <p>添加 ~/.rbenv/bin 到 $PATH 中
+<code>echo 'export PATH="$HOME/.rbenv/bin:$PATH"' &gt;&gt; ~/.zshrc</code></p>
+  </li>
+  <li>
+    <p>添加 <code>rbenv init</code> 进 Shell
+<code>echo 'eval "$(rbenv init -)"' &gt;&gt; ~/.zshrc</code></p>
+  </li>
+  <li>
+    <p>重启 Shell，检测是否安装成功
+<code>type rbenv</code> =&gt; # “rbenv is a function”</p>
+  </li>
+  <li>
+    <p>安装 <a href="https://github.com/sstephenson/ruby-build#readme">ruby-build</a>.</p>
+  </li>
+</ol>
+
+<p><strong>特别注意</strong>：<code>.zshrc</code> 为 zsh 的配置文件，若 bash 应为 <code>~/.bashrc</code>。</p>
+
+<h2 id="ruby">3. 安装 Ruby</h2>
+<p>现在可以安装指定的 Ruby 版本，并且设置为全局版本</p>
+
+<p><code>
+rbenv install 2.1.2
+rbenv global 2.1.2
+</code>
+执行 Ruby -v 可以查看设置后的 Ruby 版本</p>
+
+<h2 id="rails">4. 安装 Rails</h2>
+<p>安装好 Ruby 之后，系统就有 gem 的安装包，可以安装 Rails 了
+<code>gem install rails -v 4.1.2</code>
+<code>rails -v</code>
+查看 Rails 版本</p>
+
+<p>至此，Ruby on Rails 就安装完成了。</p>
+
+<p>注：
+<em>操作系统：Ubuntu 14.04 x64</em>
+<em>Ruby: 2.1.2</em>
+<em>Rails: 4.1.2</em></p>

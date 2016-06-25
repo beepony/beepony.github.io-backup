@@ -1,0 +1,39 @@
+<h2 id="js-">js 调试</h2>
+<p>IE 和 firefox、Chrome 都可以进行调试</p>
+
+<p>```
+&lt;!DOCTYPE html&gt;</p>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>demo</title>
+</head>
+<body>
+	<button type="button" id="add">点击</button>
+	<p id="count">0</p>
+	<script type="text/javascript">
+		var _count = 0;
+		var _ecount = document.getElementById("count");
+		var _ebtn = document.getElementById("add");
+		_ecount.innerHTML = _count;
+		_ebtn.addEventListener("click", btnclick, false);
+		function btnclick(){
+			_count++;
+			_ecount.innerHTML = _count;
+		}
+	</script>
+</body>
+</html>
+<p>```
+<img src="http://pic-bin.b0.upaiyun.com/wangyi/js%E8%B0%83%E8%AF%95.png" alt="js调试" /></p>
+
+<blockquote>
+  <p>【elements】标签页的左侧可以对页面HTML结构进行查看与编辑，右侧对元素的css进行查看与编辑修改
+【network】标签页可以分析网站请求的网络情况、查看某一请求的请求头、响应头和响应内容。
+【sources】标签页可以查看请求的资源情况，包括CSS、JS、图片等的内容。也可以设置各种断点。
+【timeline】标签页可以查看JS执行时间、页面元素渲染时间
+【Profiles】标签页主要进行性能优化，包括查看CPU执行时间与内存占用
+【audits】标签页用于优化前端页面、加速网页加载速度
+【console】标签页是js的控制台，可以查看错误信息、打印调试信息（console.log()）、写测试脚本，还可以当作Javascript API查看用
+【其他】通过点击手机图标，可以进行移动端调试页面</p>
+</blockquote>

@@ -7,7 +7,7 @@ useradd tom
 echo "正在设置密码"
 echo 123123| passwd -stdin tom
 echo "创建成功并且已经设置密码"
-</code></pre><p>执行文件</p><ul><li><p><code>chmod +x uad</code>,<code>.sh./uad.sh </code></p></li><li><p><code>sh uad.sh</code></p></li><li><p><code>source uad.sh</code></p></li></ul><h3 id="shell-">2. shell 组合应用</h3><table><tbody><tr><td>**管道：命令1</td><td>命令2**</td></tr></tbody></table><p>查找 test 文本里的 aa <br /> <code>cat test | grep aa</code></p><p>统计 etc 目录下 conf 后缀的文件综述 <br /> <code>find /etc -name "*.conf” -type f | wc -l</code></p><p>查看 httpd 的进程: <br /> <code>ps -aux | grep httpd</code></p><p><strong>重定向</strong></p><table><thead><tr><th>类型</th><th style="text-align: center">操作符</th><th style="text-align: right">用途</th></tr></thead><tbody><tr><td>重定向输入</td><td style="text-align: center">&lt;</td><td style="text-align: right">从指定文件读取数据</td></tr><tr><td>重定向输出</td><td style="text-align: center">&lt;、«</td><td style="text-align: right">将输出结果覆盖、追加到指定文件</td></tr><tr><td>标准错误输出</td><td style="text-align: center">2&gt;、2»</td><td style="text-align: right">将错误信息覆盖、追加到指定文件</td></tr><tr><td>混合输出</td><td style="text-align: center">&amp;&gt;、&amp;»</td><td style="text-align: right">将标准输出和错误信息覆盖、追加到指定文件</td></tr></tbody></table><p>查看 linux 内核版本 <br /> <code>uname -r </code> <br /> 将结果写入version.txt 中 <br /> <code>uname -r &gt; version.txt </code></p><p>因为没有 version2.txt,所以会报错 <br /> <code>cat version.txt version2.txt</code></p><p>如何将错误信息输入到文件呢，使用 <code>2&gt;</code> 输出 <br /> <code>cat version.txt version2.txt 2&gt; error.txt</code></p><p><strong>逻辑分隔符</strong></p><ul><li>与: &amp;&amp;</li><li><table><tbody><tr><td>或:</td><td> </td></tr></tbody></table></li><li>命令分割: ;</li></ul><p>逻辑与<br /> <code>echo “haha” &amp;&amp; echo “heihei"</code></p><p>逻辑或<br /> <code>echo “haha” || echo “失败"</code></p><p>通过逻辑与或者逻辑或判断命令是否执行成功，下面语句都可以判读是否创建目录成功 <br /> <code>mkdir test/a 2&gt;/dev/null &amp;&amp; echo “成功"</code> <br /> <code>mkdir test/a 2&gt;/dev/null || echo “失败”</code></p><p>命令分割符，分割多条命令 <br /> <code>cd boot/grub;ls -ls grub.conf</code></p><p>###3. shell 中变量</p><p><strong>定义和赋值</strong> <br /> 格式：变量名 = 变量值</p><p><strong>引用变量</strong> <br /> 格式：$变量名，${变量名}</p><pre><code>name = wangbin		
+</code></pre><p>执行文件</p><ul><li><p><code>chmod +x uad</code>,<code>.sh./uad.sh </code></p></li><li><p><code>sh uad.sh</code></p></li><li><p><code>source uad.sh</code></p></li></ul><h3 id="shell-">2. shell 组合应用</h3><table><tbody><tr><td>**管道：命令1</td><td>命令2**</td></tr></tbody></table><p>查找 test 文本里的 aa <br /> <code>cat test | grep aa</code></p><p>统计 etc 目录下 conf 后缀的文件综述 <br /> <code>find /etc -name "*.conf” -type f | wc -l</code></p><p>查看 httpd 的进程: <br /> <code>ps -aux | grep httpd</code></p><p><strong>重定向</strong></p><table><thead><tr><th>类型</th><th style="text-align: center">操作符</th><th style="text-align: right">用途</th></tr></thead><tbody><tr><td>重定向输入</td><td style="text-align: center">&lt;</td><td style="text-align: right">从指定文件读取数据</td></tr><tr><td>重定向输出</td><td style="text-align: center">&lt;、«</td><td style="text-align: right">将输出结果覆盖、追加到指定文件</td></tr><tr><td>标准错误输出</td><td style="text-align: center">2&gt;、2»</td><td style="text-align: right">将错误信息覆盖、追加到指定文件</td></tr><tr><td>混合输出</td><td style="text-align: center">&amp;&gt;、&amp;»</td><td style="text-align: right">将标准输出和错误信息覆盖、追加到指定文件</td></tr></tbody></table><p>查看 linux 内核版本 <br /> <code>uname -r </code> <br /> 将结果写入version.txt 中 <br /> <code>uname -r &gt; version.txt </code></p><p>因为没有 version2.txt,所以会报错 <br /> <code>cat version.txt version2.txt</code></p><p>如何将错误信息输入到文件呢，使用 <code>2&gt;</code> 输出 <br /> <code>cat version.txt version2.txt 2&gt; error.txt</code></p><p><strong>逻辑分隔符</strong></p><ul><li>与: &amp;&amp;</li><li><table><tbody><tr><td>或:</td><td> </td></tr></tbody></table></li><li>命令分割: ;</li></ul><p>逻辑与<br /> <code>echo “haha” &amp;&amp; echo “heihei"</code></p><p>逻辑或<br /> <code>echo “haha” || echo “失败"</code></p><p>通过逻辑与或者逻辑或判断命令是否执行成功，下面语句都可以判读是否创建目录成功 <br /> <code>mkdir test/a 2&gt;/dev/null &amp;&amp; echo “成功"</code> <br /> <code>mkdir test/a 2&gt;/dev/null || echo “失败”</code></p><p>命令分割符，分割多条命令 <br /> <code>cd boot/grub;ls -ls grub.conf</code></p><h3 id="shell--1">3. shell 中变量</h3><p><strong>定义和赋值</strong> <br /> 格式：变量名 = 变量值</p><p><strong>引用变量</strong> <br /> 格式：$变量名，${变量名}</p><pre><code>name = wangbin		
 echo $name
 </code></pre><p><strong>双引号：允许引用 \ 转义</strong></p><pre><code>echo “$name"
 wangbin
@@ -18,11 +18,11 @@ echo “本程序名，$0"
 echo “所使用的位置参数，$#"
 echo “第一个位置参数是，$1"
 echo “所有位置参数的内容是，$*"
-</code></pre><p>###4. 数值运算和处理</p><p><strong>整数运算</strong> <br /> 两种格式： <br /> <code>expr 命令，计算表达式 </code> <br /> <code>expr 数值1 操作符 数值2</code> <br /> 可以直接输出数值</p><p>$[]表达式，算式替换 <br /> $[数值1 操作符 数值2] <br /> 变量需要 echo 输出</p><p><code>操作符：+ - * / %</code></p><p>expr 322 /* 322，因为 * 在 linux 中是通配符，所以在作为乘号使用时要转移</p><p><strong>几个数值处理技巧</strong></p><p>变量递增递减 <br /> let 变量++ <br /> let 变量–</p><pre><code>x = 10,y = 30
+</code></pre><h3 id="section">4. 数值运算和处理</h3><p><strong>整数运算</strong> <br /> 两种格式： <br /> <code>expr 命令，计算表达式 </code> <br /> <code>expr 数值1 操作符 数值2</code> <br /> 可以直接输出数值</p><p>$[]表达式，算式替换 <br /> $[数值1 操作符 数值2] <br /> 变量需要 echo 输出</p><p><code>操作符：+ - * / %</code></p><p>expr 322 /* 322，因为 * 在 linux 中是通配符，所以在作为乘号使用时要转移</p><p><strong>几个数值处理技巧</strong></p><p>变量递增递减 <br /> let 变量++ <br /> let 变量–</p><pre><code>x = 10,y = 30
 let x++;echo $x
 let y—;echo $y
 let x+=2;echo $x，以 2 为单位递增
-</code></pre><p>生成随机数可使用 RANDOM，大小范围在：0~32767 <br /> <code>echo $RANDOM</code></p><p>随机数去余数，可以求 0~99 随机数 <br /> <code>echo $[RANDOM%100]</code></p><p>seq 生成数字序列 <br /> seq 首数 末数 <br /> seq 首数 长度 末数</p><p><code>seq 4</code> <br /> <code>seq 3 6</code> <br /> <code>seq 3 3 19</code></p><p><strong>小数处理</strong><br /> shell 无法直接处理小数，需要 bc 这个命令，例如计算小数 <br /> <code>echo 433.44-43.5 | bc</code> <br /> 计算小数并取最后四位 <br /> <code>echo “scale = 4;10/3” | bc</code></p><p>###5. 字符串处理</p><p><strong>字符串的截取</strong></p><ol><li>路径分割：dirname命令、basename命令</li><li>expr:expr substr $var1 起始位置 截取长度，编号从 1 开始</li><li>${}表达式：${$var:起始位置:截取长度}，编号为 0 开始</li></ol><p>dirname 路径，basename 文件名</p><pre><code>var = “/etc/beep/test.txt"
+</code></pre><p>生成随机数可使用 RANDOM，大小范围在：0~32767 <br /> <code>echo $RANDOM</code></p><p>随机数去余数，可以求 0~99 随机数 <br /> <code>echo $[RANDOM%100]</code></p><p>seq 生成数字序列 <br /> seq 首数 末数 <br /> seq 首数 长度 末数</p><p><code>seq 4</code> <br /> <code>seq 3 6</code> <br /> <code>seq 3 3 19</code></p><p><strong>小数处理</strong><br /> shell 无法直接处理小数，需要 bc 这个命令，例如计算小数 <br /> <code>echo 433.44-43.5 | bc</code> <br /> 计算小数并取最后四位 <br /> <code>echo “scale = 4;10/3” | bc</code></p><h3 id="section-1">5. 字符串处理</h3><p><strong>字符串的截取</strong></p><ol><li>路径分割：dirname命令、basename命令</li><li>expr:expr substr $var1 起始位置 截取长度，编号从 1 开始</li><li>${}表达式：${$var:起始位置:截取长度}，编号为 0 开始</li></ol><p>dirname 路径，basename 文件名</p><pre><code>var = “/etc/beep/test.txt"
 dirname $var = “/etc/beep/"
 basename $var = “test.txt"
 </code></pre><p>expr 截取</p><pre><code>var = “hahaheiheihehehehehehe"
@@ -33,7 +33,7 @@ echo ${var ::5} ,不写就从 0 开始截取
 </code></pre><p><strong>字符串替换</strong></p><p>${} 表达式替换 <br /> <code>${var/old/new}，只替换第一个 old 成 new</code> <br /> <code>${var//old/new}，替换这个变量里所有的 old,用两个 //</code></p><p><strong>随机字符串</strong></p><p>随机字符串生成的过程：</p><ol><li>/dev/urandom(生成随机字符，包含各种字符)</li><li>/usr/bin/md5sum（处理成标准编码字符）</li><li>/bin/cut（切割成需要的字符）</li></ol><p>举例：<br /> 先将随机设备字符转为 ASII 字符,赋值给 var，然后使用 cut 切割<br /> echo $var | cut -b 起始位置-结束位置，起始位置和结束位置都可省略.</p><pre><code>head -1 /dev/urandom | md5sum
 var = head -1 /dev/urandom | md5sum
 head -1 /dec/urandom | md5sum | cut -b -8
-</code></pre><p>###6、条件测试</p><p><strong>测试本质</strong> <br /> 测试是一条操作命令，$? 返回值来判断是否成立</p><p><strong>格式</strong> <br /> 两种格式：test 条件表达式<br /> 或者 [ 条件表达式 ],方括号前后要有空格</p><p><strong>练习方法</strong> <br /> 直接跟 &amp;&amp; echo YES 判断结果 <br /> [ 条件表达式 ] &amp;&amp; echo YES</p><p><strong>文件状态监测</strong> <br /> -e : 目标是否存在（exist) <br /> -d：判断是否是目录 directory <br /> -f : 判断是否是文件 file</p><p><code>[-f “/boot/fstable”] &amp;&amp; echo yes</code> <br /> <code>[-f “/etc”] &amp;&amp; echo yes </code></p><p><strong>权限检测</strong> <br /> -r 是否具有读权限（read） <br /> -w 是否具有写权限（write） <br /> -x 是否具有执行权限（excute）</p><pre><code>ls -l /etc/shadow #保存账号信息和密码信息，只有 root 用户又读取权限的
+</code></pre><h3 id="section-2">6、条件测试</h3><p><strong>测试本质</strong> <br /> 测试是一条操作命令，$? 返回值来判断是否成立</p><p><strong>格式</strong> <br /> 两种格式：test 条件表达式<br /> 或者 [ 条件表达式 ],方括号前后要有空格</p><p><strong>练习方法</strong> <br /> 直接跟 &amp;&amp; echo YES 判断结果 <br /> [ 条件表达式 ] &amp;&amp; echo YES</p><p><strong>文件状态监测</strong> <br /> -e : 目标是否存在（exist) <br /> -d：判断是否是目录 directory <br /> -f : 判断是否是文件 file</p><p><code>[-f “/boot/fstable”] &amp;&amp; echo yes</code> <br /> <code>[-f “/etc”] &amp;&amp; echo yes </code></p><p><strong>权限检测</strong> <br /> -r 是否具有读权限（read） <br /> -w 是否具有写权限（write） <br /> -x 是否具有执行权限（excute）</p><pre><code>ls -l /etc/shadow #保存账号信息和密码信息，只有 root 用户又读取权限的
 [-x  “/etc/shadow”] &amp;&amp; echo  YES #判断是否有可执行权限
 [-r  “/etc/shadow”] &amp;&amp; echo  YES #判断是否有可读权限
 [-w  “/etc/shadow”] &amp;&amp; echo  YES #提示 yes，这个写权限对所有者例外
@@ -42,7 +42,7 @@ head -1 /dec/urandom | md5sum | cut -b -8
 [$(who | wc -l) -gt 2] &amp;&amp; echo YES #判断当前用户数是否大于2
 </code></pre><p><strong>字符串匹配</strong><br /> = 两个字符相等 <br /> != 俩个字符不等</p><pre><code>[$USER = “root] &amp;&amp; echo YES
 [$USER != “root”] &amp;&amp; echo YES
-</code></pre><p>###7. if 判断结构</p><p><strong>单分支 if 语句结构</strong></p><pre><code>if 条件测试
+</code></pre><h3 id="if-">7. if 判断结构</h3><p><strong>单分支 if 语句结构</strong></p><pre><code>if 条件测试
      then 命令序列
 fi
 </code></pre><p>举例：检查备份目录 /opt/repo，若不存在则创建。</p><pre><code>BACKUP_DIR = “/opt/repo"
@@ -72,7 +72,7 @@ elif [ $grade -gt 60] &amp;&amp; [ $grade -lt 75]
 else
      echo “$grade,不合格”
 fi
-</code></pre><p>###8. for 循环</p><p>语法格式</p><pre><code>for 变量名 in 取值列表
+</code></pre><h3 id="for-">8. for 循环</h3><p>语法格式</p><pre><code>for 变量名 in 取值列表
 do
      命令序列
 done
@@ -105,7 +105,7 @@ do
            echo “$[IP_PRE]$IP is down"
      fi
 done
-</code></pre><p>###9. case 分支</p><p><strong>语法格式</strong></p><pre><code>case 变量值 in
+</code></pre><h3 id="case-">9. case 分支</h3><p><strong>语法格式</strong></p><pre><code>case 变量值 in
 模式1）
      命令序列
      ；；
@@ -154,12 +154,12 @@ stop)
      echo “用法：$0 [start | stop]
 
 esca
-</code></pre><p>chkconfig 处理<br /> 在脚本开头设置chkconfig 参数<br /> 添加为系统服务</p><p>在 /etc/init.d/sleepd 目录下执行<br /> chkconfig -add sleepd</p><p>###10. awk 文本处理工具</p><p><strong>作用</strong><br /> awk ，三个作者名字的第一个字母 <br /> 基于模式匹配的检查输入 <br /> 将期望的记过 print 到屏幕</p><p><strong>格式</strong> <br /> awk ‘模式{操作}’ 文件1 文件2</p><p><code>awk ‘NR==1{print} /etc/hosts</code> #把 host 第一行输出来，NR 是 awk 内置变量，表示第几行 <br /> 也可以使用 <code>head -1 /etc/hosts</code> 达到同样的效果</p><p>常见的几个内置变量： <br /> NR 当前处理行的序数 (行号)，number row <br /> FS 字符分割，缺省为空格或者 tab <br /> $n 当前行的第 n 个字段 <br /> $0 当前行所有文本内容</p><p><strong>示例</strong></p><pre><code>test-awk.txt
+</code></pre><p>chkconfig 处理<br /> 在脚本开头设置chkconfig 参数<br /> 添加为系统服务</p><p>在 /etc/init.d/sleepd 目录下执行<br /> chkconfig -add sleepd</p><h3 id="awk-">10. awk 文本处理工具</h3><p><strong>作用</strong><br /> awk ，三个作者名字的第一个字母 <br /> 基于模式匹配的检查输入 <br /> 将期望的记过 print 到屏幕</p><p><strong>格式</strong> <br /> awk ‘模式{操作}’ 文件1 文件2</p><p><code>awk ‘NR==1{print} /etc/hosts</code> #把 host 第一行输出来，NR 是 awk 内置变量，表示第几行 <br /> 也可以使用 <code>head -1 /etc/hosts</code> 达到同样的效果</p><p>常见的几个内置变量： <br /> NR 当前处理行的序数 (行号)，number row <br /> FS 字符分割，缺省为空格或者 tab <br /> $n 当前行的第 n 个字段 <br /> $0 当前行所有文本内容</p><p><strong>示例</strong></p><pre><code>test-awk.txt
 1 This is a first line
 2 Hello world
 3 64.233.185.99   google.com
 4 hunter:503:504:504::/home/sites:/bin/bash
-</code></pre><p>输入第一到第三行 <br /> <code>awk ‘NR==1,NR==3’{print}’ test-awk.txt</code></p><p>输入第一和第三行 <br /> <code>awk ‘NR==1||NR==3’{print}’ test-awk.txt</code></p><p>输出所有奇数行 <br /> <code>awk ‘NR%2==1{print}’ test-awk.txt</code></p><p>输出所有偶数行 <br /> <code>awk 'NR%2==0{print}' test-awk.txt</code></p><p>正则匹配，使用俩个斜杠匹配 /字符/</p><p>列出所有包含 a 的行 <br /> <code>awk '/a/{print}' test-awk.txt</code></p><p>列出以 bash 结尾的行 <br /> <code>awk ‘/bash$/{print}' test-awk.txt</code></p><p>awk 默认的分隔符是空格或者 tab，这样可以输出具体字段，比如输出第一到第三行的第一到第三个字段</p><p><code>awk ‘NR==1,NR==3{print $1,$3} test-awk.txt</code></p><p>除了默认分隔符，还可以使用 -F 参数指定分割符，比如,输出以点做分割，第三个字段是 185 的那一行的第二个字段，$2 代表第二个字段，$0 代表整行输出 <br /> <code>awk -F. '$3=="185”{print $2}' test-awk.txt</code></p><p>###11. sed 文本处理</p><p>stream editor，叫流编译器,不仅仅是输出，还可以替换和删除，功能更强大,基于模式匹配过滤修改和删除文本.</p><p><strong>格式</strong><br /> sed ‘编辑指令’ 文件1 文件2 … <br /> sed -n ‘编辑指令’ 文件1 文件2 ……，-n 不直接修改行，只输出 <br /> sed -i ‘编辑指令’ 文件1 文件2 ……，-i 输出修改过的行</p><p>编辑指令的格式<br /> 格式[地址1[,地址2]]操作类型 <br /> 多个指令以分号隔开</p><p>最常用的操作类型 <br /> p 输出/打印文本行 <br /> n 取下一行文本（跳过当前行） <br /> d 删除文本 <br /> s 替换文本 <br /> a 追加文本</p><p><strong>示例</strong></p><pre><code>输出hosts第三行到第五行的内容
+</code></pre><p>输入第一到第三行 <br /> <code>awk ‘NR==1,NR==3’{print}’ test-awk.txt</code></p><p>输入第一和第三行 <br /> <code>awk ‘NR==1||NR==3’{print}’ test-awk.txt</code></p><p>输出所有奇数行 <br /> <code>awk ‘NR%2==1{print}’ test-awk.txt</code></p><p>输出所有偶数行 <br /> <code>awk 'NR%2==0{print}' test-awk.txt</code></p><p>正则匹配，使用俩个斜杠匹配 /字符/</p><p>列出所有包含 a 的行 <br /> <code>awk '/a/{print}' test-awk.txt</code></p><p>列出以 bash 结尾的行 <br /> <code>awk ‘/bash$/{print}' test-awk.txt</code></p><p>awk 默认的分隔符是空格或者 tab，这样可以输出具体字段，比如输出第一到第三行的第一到第三个字段</p><p><code>awk ‘NR==1,NR==3{print $1,$3} test-awk.txt</code></p><p>除了默认分隔符，还可以使用 -F 参数指定分割符，比如,输出以点做分割，第三个字段是 185 的那一行的第二个字段，$2 代表第二个字段，$0 代表整行输出 <br /> <code>awk -F. '$3=="185”{print $2}' test-awk.txt</code></p><h3 id="sed-">11. sed 文本处理</h3><p>stream editor，叫流编译器,不仅仅是输出，还可以替换和删除，功能更强大,基于模式匹配过滤修改和删除文本.</p><p><strong>格式</strong><br /> sed ‘编辑指令’ 文件1 文件2 … <br /> sed -n ‘编辑指令’ 文件1 文件2 ……，-n 不直接修改行，只输出 <br /> sed -i ‘编辑指令’ 文件1 文件2 ……，-i 输出修改过的行</p><p>编辑指令的格式<br /> 格式[地址1[,地址2]]操作类型 <br /> 多个指令以分号隔开</p><p>最常用的操作类型 <br /> p 输出/打印文本行 <br /> n 取下一行文本（跳过当前行） <br /> d 删除文本 <br /> s 替换文本 <br /> a 追加文本</p><p><strong>示例</strong></p><pre><code>输出hosts第三行到第五行的内容
 sed -n '3,5p' /etc/hosts
 
 输出hosts第三行和第五行的内容

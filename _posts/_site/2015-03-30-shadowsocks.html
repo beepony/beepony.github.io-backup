@@ -1,0 +1,78 @@
+<p>You can use a configuration file instead of command line arguments.</p>
+
+<p>Create a config file <code>/etc/shadowsocks.json</code>.
+Example:</p>
+
+<pre><code>{
+    "server":"my_server_ip",
+    "server_port":8388,
+    "local_address": "127.0.0.1",
+    "local_port":1080,
+    "password":"mypassword",
+    "timeout":300,
+    "method":"aes-256-cfb",
+    "fast_open": false
+}
+</code></pre>
+
+<p>Explanation of the fields:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Explanation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>server</td>
+      <td>the address your server listens</td>
+    </tr>
+    <tr>
+      <td>server_port</td>
+      <td>server port</td>
+    </tr>
+    <tr>
+      <td>local_address</td>
+      <td>the address your local listens</td>
+    </tr>
+    <tr>
+      <td>local_port</td>
+      <td>local port</td>
+    </tr>
+    <tr>
+      <td>password</td>
+      <td>password used for encryption</td>
+    </tr>
+    <tr>
+      <td>timeout</td>
+      <td>in seconds</td>
+    </tr>
+    <tr>
+      <td>method</td>
+      <td>default: “aes-256-cfb”, see <a href="https://github.com/shadowsocks/shadowsocks/wiki/Encryption">Encryption</a></td>
+    </tr>
+    <tr>
+      <td>fast_open</td>
+      <td>use <a href="https://github.com/shadowsocks/shadowsocks/wiki/TCP-Fast-Open">TCP_FASTOPEN</a>, true / false</td>
+    </tr>
+    <tr>
+      <td>workers</td>
+      <td>number of workers, available on Unix/Linux</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>To run in the foreground:</p>
+
+<pre><code>ssserver -c /etc/shadowsocks.json
+</code></pre>
+
+<p>To run in the background:</p>
+
+<pre><code>ssserver -c /etc/shadowsocks.json -d start
+ssserver -c /etc/shadowsocks.json -d stop
+</code></pre>
+
+<p>防止文档被墙，人肉备份，via <a href="https://github.com/shadowsocks/shadowsocks/wiki/Configuration-via-Config-File">shadowsocks</a></p>
