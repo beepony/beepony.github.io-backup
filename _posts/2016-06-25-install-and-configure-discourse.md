@@ -34,6 +34,7 @@ mkdir /var/discourse
 git clone https://github.com/discourse/discourse_docker.git /var/discourse
 cd /var/discourse
 ```
+
 ## 配置邮件服务器
 进入 /var/discourse 执行 `./discourse-setup` 脚本来配置邮件服务。在做这一步之前，先去 Mailgun 上注册个帐号，然后在域名的 DNS 服务商里，配置好 MX、TXT 等记录，Mailgun 文档写的很详细，跟着操作就可以了。执行脚本之后
 
@@ -102,6 +103,7 @@ env 里配置域名和邮件信息
   DISCOURSE_SMTP_PASSWORD: "xxx"
   #DISCOURSE_SMTP_ENABLE_START_TLS: true           # (optional, default true)
 ```
+
 ## 创建管理员账户
 更多的配置项是管理员登录后台配置的，要先配置好管理员。连到服务器，`cd /var/discourse`，`./launch enter app` 进入 Docker 容器中的 Rails App，执行命令
 `rake admin:create` 不管是新建管理员、重置管理员密码和对已经存在的帐号赋予管理员权限都是这个命令。
