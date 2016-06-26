@@ -211,6 +211,7 @@ send "rm -rf tkb\r"
 send "mv site tkb\r"
 interact
 ```
+
 ## 结论
 上面就是 expect 脚本的一些最基本的概念。以前需要手工处理一系列动作，现在可以通过 expect 转化为执行一系列列动作的脚本。
 本文翻译自 [Basic principles of using tcl-expect scripts](https://gist.github.com/Fluidbyte/6294378)
